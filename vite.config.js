@@ -7,5 +7,6 @@ export default defineConfig({
   base: '/portfolio/', // 👈 use your repo name here
   build: {
     outDir: 'build',
+    sourcemap: false, // Disable source maps to avoid confusion in production
   },
 })
