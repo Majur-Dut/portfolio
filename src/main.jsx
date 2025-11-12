@@ -24,8 +24,18 @@ const router = createBrowserRouter([
 	basename: '/portfolio',
 })
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>,
-)
+const rootElement = document.getElementById('root')
+if (!rootElement) {
+  console.error('Root element not found!')
+} else {
+  try {
+    createRoot(rootElement).render(
+      <StrictMode>
+        <RouterProvider router={router} />
+      </StrictMode>,
+    )
+  } catch (error) {
+    console.error('Error rendering React app:', error)
+    rootElement.innerHTML = '<div style="padding: 20px; color: red;">Error loading application. Please check the console.</div>'
+  }
+}
